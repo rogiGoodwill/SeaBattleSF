@@ -1,23 +1,12 @@
 from player import Player
 from field import Field
 from ships import Ships
-
+from messages import Messages as msg
 
 class StartSeaBattle:
     @staticmethod
     def start_game():
-        print('******************************')
-        print('*                            *')
-        print('*  Добро пожаловать в игру   *')
-        print('*--------МОРСКОЙ БОЙ!--------*')
-        print('*                            *')
-        print('* Обозначения на поле:       *')
-        print('* Знак O - пустое поле       *')
-        print('* Знак T - промах            *')
-        print('* Знак X - попадание         *')
-        print('* Знак + - подбитый корабль  *')
-        print('*                            *')
-        print('******************************')
+        print(msg.message_welcome)
 
         player = Player()
         player.field = Field()
@@ -45,21 +34,12 @@ class StartSeaBattle:
             comp.field.show_field(hide_ships=selector_hide_ships)
             if player_attack.score == win_score:
                 if player_attack == player:
-                    print()
-                    print()
-                    print('****************************************************')
-                    print(f'Поздравляем, {player_attack.field.player_name}, Вы победили!')
-                    print('****************************************************')
+                    print(msg.message_congrat_player)
                     input('Нажмите Enter для выхода\n')
                 else:
-                    print()
-                    print()
-                    print('****************************************************')
-                    print(f'Искусственный интелект одержал верх над человеком!')
-                    print(f'Не расстраивайтесь, {player.field.player_name}, в следуюший раз повезет!')
-                    print('****************************************************')
+                    print(msg.message_congrat_comp)           
                     input('Нажмите Enter для выхода\n')
-                return False
+                return False                
             if not repeat_move:
                 if player_attack == player:
                     player_attack = comp
@@ -67,4 +47,3 @@ class StartSeaBattle:
                 else:
                     player_attack = player
                     player_opponent = comp
-
