@@ -6,8 +6,8 @@ class Ship:
         self.coord_x = coord_x
         self.coord_y = coord_y
         self.course = course
-        self.coordinates = Ship.ship_coordinates(self)
-        self.coordinates_around_ship = Ship.ship_coordinates_around(self)
+        self.coordinates = self.ship_coordinates()
+        self.coordinates_around_ship = self.ship_coordinates_around()
         self.ship_health = length
 
     # Создание множества координат корабля
