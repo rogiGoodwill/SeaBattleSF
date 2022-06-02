@@ -26,15 +26,13 @@ class StartSeaBattle:
         comp.field.show_field(hide_ships=selector_hide_ships)
         player_attack = player
         player_opponent = comp
-        count_turn = 0
-        while True:
-            count_turn += 1
+        while True:           
+            
             repeat_move = False
             repeat_move = player_attack.turn(player_opponent)
-            if count_turn == 2:
-                player.field.show_field()
-                comp.field.show_field(hide_ships=selector_hide_ships)
-                count_turn = 0
+            player.field.show_field()
+            comp.field.show_field(hide_ships=selector_hide_ships)
+
             if player_attack.score == win_score:
                 if player_attack == player:
                     print(msg.message_congrat_player)
