@@ -62,7 +62,7 @@ class Player:
         self.shoots.update(fire)
         if opponent.field.ships_coordinates.intersection(fire):
             print()
-            print('Есть попадание!')
+            print(f'Игрок {self.field.player_name} попал в корабль игрка {opponent.field.player_name} . Есть попадание!')
             self.score += 1
             opponent.field.field[tuple_fire[1] - 1][tuple_fire[0] - 1] = 'X'
             opponent.destroyed_ships.update(Player.rest_of_ships(opponent.built_ships, tuple_fire))
