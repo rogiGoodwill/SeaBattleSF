@@ -44,7 +44,7 @@ class Field:
         if self.__ships_coordinates is None:
             self.__ships_coordinates = value
             self.field = [
-                ['O' for _ in range(self.__field_size)] for i in range(self.__field_size)]
+                [' ' for _ in range(self.__field_size)] for i in range(self.__field_size)]
             for dot in self.__ships_coordinates:
                 self.field[dot[1] - 1][dot[0] - 1] = '■'
 
@@ -63,7 +63,7 @@ class Field:
             for j in range(self.__field_size):
                 if hide_ships:
                     if player_field[i][j] == '■':
-                        print(f' O ', end='|')
+                        print(f'   ', end='|')
                     else:
                         print(f' {player_field[i][j]} ', end='|')
                 else:
