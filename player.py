@@ -11,7 +11,7 @@ class Player:
         self.shoots = set()
 
     def turn(self, opponent):
-
+        print(f'\n Стреляет {self.field.player_name}')
         if self.field.player_name == 'Computer':
             while True:
                 x = randrange(1, self.field.field_size + 1)
@@ -20,12 +20,12 @@ class Player:
                 tmp = set()
                 tmp.add(tuple(map(lambda a: int(a), comp_coordinates)))
                 if not tmp.intersection(self.shoots):
-                    return Player.shoot(self, opponent, comp_coordinates)
+                    return self.shoot(opponent, comp_coordinates)
 
         else:
             try:
                 input_coordinates = input(
-                    f'Ходит игрок {self.field.player_name}. Введите координаты x, y через пробел или exit для выхода: ').split()
+                    f'Введите координаты x, y через пробел или exit для выхода: ').split()
                 if ''.join(input_coordinates) == 'exit':
                     quit()
                 elif len(input_coordinates) != 2:
@@ -62,7 +62,7 @@ class Player:
         self.shoots.update(fire)
         if opponent.field.ships_coordinates.intersection(fire):
             print()
-            print(f'Игрок {self.field.player_name} попал в корабль игрка {opponent.field.player_name} . Есть попадание!')
+            print(f'Игрок {self.field.player_name} попал в корабль игрока {opponent.field.player_name}!')
             self.score += 1
             opponent.field.field[tuple_fire[1] - 1][tuple_fire[0] - 1] = 'X'
             opponent.destroyed_ships.update(Player.rest_of_ships(opponent.built_ships, tuple_fire))
@@ -70,9 +70,21 @@ class Player:
             if opponent.field.ships_coordinates.intersection(opponent.destroyed_ships):
                 for dot in opponent.destroyed_ships:
                     opponent.field.field[dot[1] - 1][dot[0] - 1] = '+'
+            if self.field.player_name != 'Computer':
+                self.field.show_field()
+                opponent.field.show_field(hide_ships=True)
+            else:                 
+                opponent.field.show_field()       
+                self.field.show_field(hide_ships=True)                       
             return True
         else:
-            opponent.field.field[tuple_fire[1] - 1][tuple_fire[0] - 1] = 'T'
+            opponent.field.field[tuple_fire[1] - 1][tuple_fire[0] - 1] = 'T'      
+            if self.field.player_name != 'Computer':
+                self.field.show_field()
+                opponent.field.show_field(hide_ships=True)
+            else:
+                opponent.field.show_field()   
+                self.field.show_field(hide_ships=True)                                 
         fire.clear()
 
     @staticmethod
