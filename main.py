@@ -30,8 +30,6 @@ class StartSeaBattle:
             
             repeat_move = False
             repeat_move = player_attack.turn(player_opponent)
-            player.field.show_field()
-            comp.field.show_field(hide_ships=selector_hide_ships)
 
             if player_attack.score == win_score:
                 if player_attack == player:
