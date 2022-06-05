@@ -1,5 +1,5 @@
 class Ship:
-    '''Класс создания корабля'''
+    """Класс создания корабля"""
 
     def __init__(self, length, coord_x, coord_y, course):
         self.length = length

@@ -3,6 +3,7 @@ from field import Field
 from ships import Ships
 from messages import Messages as msg
 
+
 class StartSeaBattle:
     @staticmethod
     def start_game():
@@ -26,9 +27,8 @@ class StartSeaBattle:
         comp.field.show_field(hide_ships=selector_hide_ships)
         player_attack = player
         player_opponent = comp
-        while True:           
-            
-            repeat_move = False
+        while True:
+
             repeat_move = player_attack.turn(player_opponent)
 
             if player_attack.score == win_score:
@@ -36,9 +36,9 @@ class StartSeaBattle:
                     print(msg.message_congrat_player)
                     input('Нажмите Enter для выхода\n')
                 else:
-                    print(msg.message_congrat_comp)           
+                    print(msg.message_congrat_comp)
                     input('Нажмите Enter для выхода\n')
-                return False                
+                return False
             if not repeat_move:
                 if player_attack == player:
                     player_attack = comp

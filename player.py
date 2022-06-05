@@ -44,13 +44,13 @@ class Player:
                 print(msg.message_quantity_coordinate_exception)
                 return True  # возвращаем True для того, чтобы ход не переходил сопернику
             except IsDigitalCoordinateException:
-                print(msg.message_is_digital_coordinate_exception)               
+                print(msg.message_is_digital_coordinate_exception)
                 return True  # возвращаем True для того, чтобы ход не переходил сопернику
             except CoordinatesNotInField:
                 print(msg.message_coordinates_not_in_field)
                 return True  # возвращаем True для того, чтобы ход не переходил сопернику
             except RepeatCoordinates:
-                print(msg.message_repeat_coordinates)               
+                print(msg.message_repeat_coordinates)
                 return True  # возвращаем True для того, чтобы ход не переходил сопернику
             else:
                 return Player.shoot(self, opponent, input_coordinates)
@@ -73,19 +73,19 @@ class Player:
             if self.field.player_name != 'Computer':
                 self.field.show_field()
                 opponent.field.show_field(hide_ships=True)
-            else:                 
-                opponent.field.show_field()       
-                self.field.show_field(hide_ships=True)                       
+            else:
+                opponent.field.show_field()
+                self.field.show_field(hide_ships=True)
             return True
         else:
-            opponent.field.field[tuple_fire[1] - 1][tuple_fire[0] - 1] = 'T'      
+            opponent.field.field[tuple_fire[1] - 1][tuple_fire[0] - 1] = 'T'
             if self.field.player_name != 'Computer':
                 self.field.show_field()
                 opponent.field.show_field(hide_ships=True)
             else:
-                opponent.field.show_field()   
-                self.field.show_field(hide_ships=True)                                 
-        fire.clear()
+                opponent.field.show_field()
+                self.field.show_field(hide_ships=True)
+            return False
 
     @staticmethod
     def rest_of_ships(ships, hit):

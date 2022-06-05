@@ -1,5 +1,5 @@
 class Field:
-    '''Класс создания поля для игры'''
+    """Класс создания поля для игры"""
 
     def __init__(self):
         self.__player_name = None

@@ -2,8 +2,9 @@ from random import randrange
 import time
 from ship import Ship
 
+
 class Ships:
-    '''Класс создания кораблей на игровом поле'''
+    """Класс создания кораблей на игровом поле"""
 
     # В списке ship_list задается длина и количество кораблей на поле
     ship_list = [3, 2, 2, 1, 1, 1, 1]
@@ -16,9 +17,10 @@ class Ships:
     def get_coordinates(self):
         ships_coordinates = set()
         time_start = time.time()
+        built_ships = dict()
         while len(ships_coordinates) != sum(Ships.ship_list):
             ships_coordinates.clear()
-            built_ships = dict()
+            built_ships.clear()
             key_num = 0
             for amount_decks in Ships.ship_list:
                 key_num += 1

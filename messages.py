@@ -1,6 +1,3 @@
-from email import message
-from main import *
-
 class Messages:
     message_welcome = '''
     ******************************
@@ -39,6 +36,7 @@ class Messages:
 
     '''
 
+
 class MessageException:
     message_quantity_coordinate_exception = '''
 ---                                                              ---
@@ -63,4 +61,3 @@ class MessageException:
 --- Ошибка ввода координат! Вы уже стреляли в эту точку! ---
 ---                                                      ---    
     '''
-
